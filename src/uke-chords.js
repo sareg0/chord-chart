@@ -1,0 +1,57 @@
+const chords = 
+  [
+    {
+      "id": 1,
+      "name": "F#",
+      "characteristics": [
+        {
+          "fret": 1,
+          "string": 2,
+          "finger": 1
+        },
+        {
+          "fret": 1,
+          "string": 4,
+          "finger": 2
+        },
+        {
+          "fret": 2,
+          "string": 3,
+          "finger": 3
+        },
+        {
+          "fret": 3,
+          "string": 1,
+          "finger": 4
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "F#7",
+      "characteristics": [
+        {
+          "fret": 2,
+          "string": 3,
+          "finger": 1
+        },
+        {
+          "fret": 3,
+          "string": 1,
+          "finger": 2
+        },
+        {
+          "fret": 4,
+          "string": 2,
+          "finger": 3
+        },
+        {
+          "fret": 4,
+          "string": 4,
+          "finger": 4
+        }
+      ]
+    }
+  ]
+
+export default chords
