@@ -2,26 +2,18 @@ import React, { useState } from 'react';
 import './App.css';
 import FretBoard from './FretBoard'
 
-// import {BrowserRouter as Router, Switch, Router, Link} from 'react-router-dom'
-import Chords from './uke-chords'
-// const chords = require('./uke-chords.json')
-
+import { chords } from './uke-chords'
 
 function App() {
-  debugger
-  const [selectedChord, setSelectedChord] = useState(Chords[0])
-  const handleChordChange = (chord) => {
-    console.log('change chord')
-    //find chord from 'chords'
-    setSelectedChord(Chords.find(chord => chord.id === chord))
-  }
+  const [selectedChordId, setSelectedChordId] = useState(chords[0].id)
+  const chord = chords.find(chord => chord.id === selectedChordId)
 
   return (
     <>
-      <h2>{selectedChord.name}</h2>
-      <FretBoard chord={selectedChord} size="lg" />
+      <h2>{chord.name}</h2>
+      <FretBoard chord={chord} size="lg" />
       <div style={{display: 'flex', width: '100%'}}>
-        {Chords.map((chord) => <FretBoard key={chord.id} chord={chord} size="sm" handleChordChange={handleChordChange} />)}
+        {chords.map((chord) => <FretBoard key={chord.id} chord={chord} size="sm" handleChordChange={setSelectedChordId} />)}
       </div>
     </>
     // <Router>
