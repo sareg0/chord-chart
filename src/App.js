@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import './App.css';
 import FretBoard from './FretBoard'
+import AnimatedFretBoard from './AnimatedFretBoard'
 
-import { chords } from './uke-chords'
+import chords from './uke-chords.json'
+
 
 function App() {
   const [selectedChordId, setSelectedChordId] = useState(chords[0].id)
+  const [lastSelectedChordId, setLastSelectedChordId] = useState(chords[1].id)
   const chord = chords.find(chord => chord.id === selectedChordId)
+  const lastChord = chords.find(chord => chord.id === lastSelectedChordId)
 
   return (
     <>
       <h2>{chord.name}</h2>
-      <FretBoard chord={chord} size="lg" />
+      <AnimatedFretBoard chord={chord} lastChord={lastChord} size="lg"/>
       <div style={{display: 'flex', width: '100%'}}>
         {chords.map((chord) => <FretBoard key={chord.id} chord={chord} size="sm" handleChordChange={setSelectedChordId} />)}
       </div>

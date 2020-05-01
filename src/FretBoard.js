@@ -1,7 +1,8 @@
 import React from 'react'
 import Finger from './Finger'
 
-//future feature. The fretboard should be generative too
+//future feature. The fretboard should be generative too; different string numbers
+//enable the ability to represent bar chords
 
 // "characteristics": [
 //   {
@@ -33,7 +34,7 @@ const boardWidths = {
 //size will be used to determine the width of the fretboard
 //so it can be either teeny tiny OR big
 
-const FretBoard = ({chord, size, handleChordChange}) => {
+const FretBoard = ({chord, lastChord, size, handleChordChange}) => {
   return (
     <a href="#" onClick={() => handleChordChange(chord.id)}>
 
@@ -56,7 +57,7 @@ const FretBoard = ({chord, size, handleChordChange}) => {
             height="200" 
             style={{fill: 'white', stroke: 'black', strokeWidth: 2 }}
          />
-        <g id="fret-bars" stroke="black" stroke-width="2">
+        <g id="fret-bars" stroke="black" strokeWidth="2">
             <line x1="0" y1="50" x2="120" y2="50" />
             <line x1="0" y1="100" x2="120" y2="100" />
             <line x1="0" y1="150" x2="120" y2="150" />
@@ -67,15 +68,20 @@ const FretBoard = ({chord, size, handleChordChange}) => {
         </g>
     </g>
     {
-      chord.characteristics.map((characteristic) => {
-        const string = characteristic.string.toString()
-        const fret = characteristic.fret.toString()
+      chord.characteristics.map((characteristic, index) => {
+        //account for chords that don't have all four fingers
+        const wasAtX = lastChord && strings[lastChord.characteristics[index].string.toString()]
+        const wasAtY = lastChord && frets[lastChord.characteristics[index].fret.toString()]
+        const goingToX = strings[characteristic.string.toString()]
+        const goingToY = frets[characteristic.fret.toString()]
         return (
           <Finger 
             key={`finger-${characteristic.finger}`} 
             fingerNumber={characteristic.finger}
-            xCoord={strings[string]} //determined by the string
-            yCoord={frets[fret]} //determined by the fre
+            wasAtX={wasAtX} //determined by the string
+            wasAtY={wasAtY} //determined by the fre
+            goingToX={goingToX}
+            goingToY={goingToY}
           />
         )
       })
@@ -84,5 +90,8 @@ const FretBoard = ({chord, size, handleChordChange}) => {
     </a>
   )
 }
+
+//TODO: proptypes
+//TODO: add tests
 
 export default FretBoard

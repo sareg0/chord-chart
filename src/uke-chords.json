@@ -1,4 +1,4 @@
-export const chords = [
+[
   {
     "id": 1,
     "name": "F#",
@@ -6,7 +6,7 @@ export const chords = [
       {
         "fret": 1,
         "string": 2,
-        "finger": 1,
+        "finger": 1
       },
       {
         "fret": 1,
@@ -21,7 +21,7 @@ export const chords = [
       {
         "fret": 3,
         "string": 1,
-        "finger": 4,
+        "finger": 4
       }
     ]
   },
@@ -47,7 +47,7 @@ export const chords = [
       {
         "fret": 4,
         "string": 4,
-        "finger": 4,
+        "finger": 4
       }
     ]
   }
