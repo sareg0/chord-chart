@@ -36,8 +36,6 @@ const boardWidths = {
 
 const FretBoard = ({chord, lastChord, size, handleChordChange}) => {
   return (
-    <a href="#" onClick={() => handleChordChange(chord.id)}>
-
 <svg 
     width={`${boardWidths[size]}`}
     viewBox="-20 0 202 209" 
@@ -87,7 +85,6 @@ const FretBoard = ({chord, lastChord, size, handleChordChange}) => {
       })
     }
 </svg>
-    </a>
   )
 }
 
